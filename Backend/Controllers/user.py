@@ -8,14 +8,14 @@ userRouter = APIRouter()
 
 
 
-@userRouter.post("/create_user")
-async def create_user(user_details: CreateUser):
-    if not user_details.username or not user_details.password:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Please Enter Username or Password")
-    db = Database()
-    hash_password = get_password_hashed(user_details.password)
-    user_created = db.create_user(user_details.username, hash_password)
-    return user_created
+# @userRouter.post("/create_user")
+# async def create_user(user_details: CreateUser):
+#     if not user_details.username or not user_details.password:
+#         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Please Enter Username or Password")
+#     db = Database()
+#     hash_password = get_password_hashed(user_details.password)
+#     user_created = db.create_user(user_details.username, hash_password)
+#     return user_created
     
 
 

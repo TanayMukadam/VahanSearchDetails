@@ -84,4 +84,17 @@ class Database:
         self.connection.close()
         
         return user
+    
+    
+    def log_search(self, username, regno=None, phoneno=None):
+        self.connect_db()
+        cursor = self.connection.cursor()
+        sql = """
+        INSERT INTO search_logs (username, regno, phoneno)
+        VALUES (%s, %s, %s)
+        """
+        cursor.execute(sql, (username, regno, phoneno))
+        self.connection.commit()
+        cursor.close()
+
 
